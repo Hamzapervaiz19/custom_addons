@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_view_form_custom" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.custom.fields</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Insert after the Sales Price field -->
+            <xpath expr="//field[@name='list_price']" position="after">
+                <group>
+                    <field name="min_price"/>
+                    <field name="retail_price"/>
+                </group>
+            </xpath>
+
+            <!-- Add remaining fields in a new group for proper labels -->
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="custom Information" name="custom_information">
+                    <group >
+                        <field name="series"/>
+                        <field name="dimensions"/>
+                        <field name="finishing"/>
+                        <field name="brand"/>
+                        <field name="op_stock"/>
+                        <field name="op_amt"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<odoo>-->
+<!--    <record id="product_template_view_form_custom" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.inherit.custom.fields</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            &lt;!&ndash; Insert after the Sales Price field &ndash;&gt;-->
+<!--            <xpath expr="//field[@name='list_price']" position="after">-->
+<!--                <field name="min_price"/>-->
+<!--                <field name="retail_price"/>-->
+<!--            </xpath>-->
+
+<!--            &lt;!&ndash; Add remaining fields at the end of general info tab &ndash;&gt;-->
+<!--            <xpath expr="//page[@name='general_information']/group" position="inside">-->
+<!--                <field name="series"/>-->
+<!--                <field name="dimensions"/>-->
+<!--                <field name="finishing"/>-->
+<!--                <field name="brand"/>-->
+<!--                <field name="op_stock"/>-->
+<!--                <field name="op_amt"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->
+
